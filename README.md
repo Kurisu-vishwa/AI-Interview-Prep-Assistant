@@ -106,3 +106,5 @@ Assistant: Uses softer targets like 0.9 and 0.1 to improve generalization.
 ```
 
 ---
+# Live demo
+Demo link: https://huggingface.co/spaces/Akira10001/AI-Interview-Prep-Assistant
