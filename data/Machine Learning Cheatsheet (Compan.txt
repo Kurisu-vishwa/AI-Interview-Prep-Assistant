@@ -1,0 +1,183 @@
+Machine Learning Cheatsheet (Companion PDF
+Content for RAG Knowledge Base)
+1. Core ML Workflow
+1. Define problem
+2. Collect data
+3. Clean data
+4. Feature engineering
+5. Train baseline
+6. Evaluate
+7. Tune
+8. Deploy
+9. Monitor drift
+2. Essential Formulas
+Linear Regression
+Prediction: y = b0 + b1x
+Cost (MSE): J = (1/n) Σ(y - y_hat)^2
+Logistic Regression
+Sigmoid: P(y=1)=1/(1+e^-z)
+Log loss: -1/n Σ[y log(p)+(1-y)log(1-p)]
+Gradient Descent
+theta = theta - alpha * gradient
+alpha = learning rate
+Bayes Theorem
+P(A|B)= P(B|A)P(A)/P(B)
+1
+3. Evaluation Metrics
+Classification
+Accuracy: (TP+TN)/(TP+TN+FP+FN)
+Precision: TP/(TP+FP)
+Recall: TP/(TP+FN)
+F1: 2PR/(P+R)
+Use:
+• Precision when false positives costly
+• Recall when false negatives costly
+Regression
+MAE: mean absolute error
+MSE: mean squared error
+RMSE: sqrt(MSE)
+R²: Explained variance
+4. Bias-Variance Summary
+High Bias:
+• Underfitting
+• Model too simple
+High Variance:
+• Overfitting
+• Model too complex
+Goal: Balance both.
+2
+5. Algorithm Quick Comparison
+Linear Regression
+Use: Simple continuous prediction Pros: Fast, interpretable Cons: Limited nonlinear power
+Logistic Regression
+Use: Classification baseline Pros: Simple, probabilistic Cons: Linear boundary
+Decision Tree
+Use: Interpretable nonlinear modeling Pros: Explainable Cons: Overfits easily
+Random Forest
+Use: Strong default tabular model Pros: Robust Cons: Less interpretable
+XGBoost
+Use: High-performance structured data Pros: Often top performer Cons: Tuning complexity
+SVM
+Use: High-dimensional data Pros: Strong margin classifier Cons: Scaling difficult
+KNN
+Use: Simple similarity tasks Pros: Easy Cons: Slow at scale
+6. Bagging vs Boosting
+Bagging: Parallel Variance reduction Example: Random Forest
+Boosting: Sequential Bias reduction Example: XGBoost
+3
+7. Deep Learning Cheat Notes
+Neural Network: Input -> Hidden -> Output
+Activation:
+• ReLU default
+• Sigmoid probabilities
+Common problems:
+• Vanishing gradients
+• Exploding gradients
+Fixes:
+• ReLU
+• Batch norm
+• Gradient clipping
+Regularization:
+• Dropout
+• Weight decay
+8. CNN Quick Notes
+Convolution: Feature extraction
+Pooling: Downsampling
+Good for:
+• Images
+• Vision
+9. Transformer Quick Notes
+Self-attention: Measures token relevance.
+Advantages:
+• Parallelizable
+• Long-range context
+4
+Examples:
+• BERT
+• GPT
+10. Common Interview Traps
+Overfitting != Underfitting
+Data drift != Concept drift
+Feature selection != PCA
+Bagging != Boosting
+Fine-tuning != RAG
+Precision != Recall
+11. Imbalanced Data Toolkit
+Use:
+• Class weights
+• SMOTE
+• Threshold tuning
+• Precision-recall curve
+Avoid relying only on accuracy.
+12. Hyperparameter Tuning
+Tune:
+• Learning rate
+• Max depth
+• Regularization
+• Batch size
+Methods:
+• Grid search
+• Random search
+• Bayesian optimization
+5
+13. Feature Engineering Checklist
+Check:
+• Missing values
+• Encoding
+• Scaling
+• Leakage
+• Interaction features
+• Outliers
+14. RAG Cheatsheet
+Pipeline: Query -> Embedding -> Vector Search -> Retrieve chunks -> Prompt augmentation -> LLM
+response
+Chunk Sizes (Starting Heuristic)
+256 tokens: Precise retrieval
+512 tokens: Balanced default
+1024 tokens: More context
+Test empirically.
+Similarity Metrics
+• Cosine similarity
+• Dot product
+• Euclidean distance
+Cosine common default.
+Vector Databases
+• FAISS
+• Chroma
+• Pinecone
+6
+ANN Search Concepts
+Approximate nearest neighbor: Faster than brute-force search.
+Important for scale.
+15. MLOps Cheatsheet
+Monitor:
+• Data drift
+• Concept drift
+• Latency
+• Accuracy decay
+Track:
+• Experiments
+• Model versions
+• Reproducibility
+Tools:
+• MLflow
+• Docker
+16. Baseline Before Fancy Models
+Always start with:
+• Simple model
+• Error analysis
+• Then complexity
+Strong interview principle.
+Do not jump straight to deep learning.
+17. 30-Second Revision Sheet
+If asked: "How improve model?" Answer: Data -> Features -> Tune -> Better model -> Ensemble ->
+Monitor.
+If asked: "How approach ML problem?" Answer: Problem -> Metric -> Data -> Baseline -> Iterate.
+7
+If asked: "How handle imbalance?" Answer: Class weights + PR metrics + threshold tuning.
+18. Suggested Metadata Tags for RAG Ingestion
+Example: { topic: "classification", difficulty: "intermediate", tags:["logistic regression","metrics"],
+type:"cheatsheet" }
+Use metadata filters during retrieval.
+End of cheatsheet.
+8

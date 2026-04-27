@@ -1,0 +1,645 @@
+1. What is Machine Learning?
+Answer: Machine Learning (ML) is a subset of AI where systems learn patterns from data to make
+predictions or decisions without being explicitly programmed for every rule.
+Detailed Explanation: Traditional programming uses rules + data to produce outputs. ML reverses this:
+data + outputs are used to learn rules (model). The model then predicts outputs for unseen data.
+Example: Email spam detection learns patterns from labeled emails.
+Follow-up: Types include supervised, unsupervised, reinforcement learning.
+2. What is supervised learning?
+Answer: Learning from labeled data where inputs map to known outputs.
+Detailed Explanation: Model receives training examples (X, y) and learns a function f(X)=y. Tasks:
+• Classification (discrete labels)
+• Regression (continuous values)
+Example: Predicting house prices.
+3. What is unsupervised learning?
+Learns patterns from unlabeled data.
+Detailed Explanation: There is no target variable. Model discovers structure such as clusters, latent
+factors, anomalies.
+Example: Customer segmentation using K-Means.
+1
+4. Difference between classification and regression
+Classification predicts categories. Regression predicts numeric values.
+Example:
+• Spam/Not Spam → classification
+• Stock price → regression
+5. What is overfitting?
+Model memorizes training noise rather than general patterns.
+Signs:
+• Low training error
+• High test error
+Causes:
+• Too much model complexity
+• Too little data
+• Noise
+Fixes:
+• Regularization
+• Cross-validation
+• Pruning
+• More data
+6. What is underfitting?
+Model too simple to learn patterns.
+Example: Fitting a line to nonlinear data.
+Fixes:
+• More features
+• More complex model
+• Train longer
+7. Explain bias vs variance
+Bias = systematic error. Variance = sensitivity to training data.
+2
+High bias → underfitting. High variance → overfitting. Goal is balance.
+8. What is the bias-variance tradeoff?
+Increasing complexity often lowers bias but increases variance. Goal is minimum total error.
+9. What is cross-validation?
+Technique for robust model evaluation.
+K-fold: Split into k folds. Train on k-1. Test on remaining fold. Repeat. Average results.
+10. What is train-test split?
+Data divided into training and testing sets. Often 80/20. Used to evaluate generalization.
+11. What is feature engineering?
+Creating better inputs for models. Examples:
+• Encoding
+• Scaling
+• Interaction terms
+• Date decomposition
+12. What is feature selection?
+Choosing useful variables. Benefits:
+• Lower overfitting
+• Faster training
+• Better interpretability
+Methods:
+• Filter
+• Wrapper
+• Embedded
+3
+13. What is data leakage?
+When future or target information unintentionally enters training. Produces unrealistically good results.
+14. What is regularization?
+Penalty to reduce complexity. Helps prevent overfitting.
+15. Difference between L1 and L2 regularization
+L1 can force coefficients to zero. L2 shrinks coefficients smoothly.
+L1 useful for feature selection.
+16. What is gradient descent?
+Optimization algorithm minimizing loss. Updates parameters iteratively.
+17. Batch vs stochastic gradient descent
+Batch uses all data. SGD uses one sample. Mini-batch uses small subsets.
+18. What is learning rate?
+Step size in optimization. Too high → divergence. Too low → slow convergence.
+19. What is a loss function?
+Measures model error. Examples:
+• MSE
+• Cross-entropy
+20. What is an objective function?
+Function optimizer minimizes. Often loss + regularization.
+4
+21. What is normalization?
+Rescales data to standard range. Example 0–1.
+22. What is standardization?
+Transforms mean=0 std=1. Common for many models.
+23. Why handle missing values?
+Many models cannot handle nulls. Approaches:
+• Drop
+• Impute mean/median
+• Predict missing values
+24. What are outliers?
+Extreme observations. Can distort models. Need detect and treat carefully.
+25. What is curse of dimensionality?
+High dimensions make learning harder. Distance becomes less meaningful. Can hurt clustering and
+generalization.
+26. Explain Linear Regression
+Answer: Linear Regression is a supervised learning algorithm used to predict a continuous target
+variable by modeling a linear relationship between input features and output.
+Detailed Explanation: The model assumes the target can be approximated as: Y = b0 + b1X1 + b2X2
++ ... + bnXn + error
+Where:
+• b0 is intercept
+• bi are coefficients
+• error captures unexplained variation
+Training tries to find coefficients minimizing residual errors, usually using Ordinary Least Squares (OLS).
+5
+Intuition: It fits the best possible line (or hyperplane in multiple dimensions).
+Use Cases:
+• House price prediction
+• Sales forecasting
+• Demand estimation
+Pros:
+• Interpretable
+• Fast
+• Strong baseline
+Limitations:
+• Struggles with nonlinear patterns
+• Sensitive to outliers
+27. Assumptions of Linear Regression
+Main assumptions: 1. Linearity: Relationship between predictors and target is linear. 2. Independence:
+Observations independent. 3. Homoscedasticity: Constant variance of residuals. 4. Normality: Residuals
+roughly normal. 5. Low multicollinearity.
+Violation can make estimates unreliable.
+28. What is multicollinearity?
+When predictors are highly correlated.
+Example: Using house size in sq.ft and house size in sq.m as separate features.
+Problems:
+• Unstable coefficients
+• Hard interpretation
+• Inflated variance
+Detection:
+• Correlation matrix
+• VIF
+Fix:
+• Remove features
+• PCA
+6
+• Regularization
+29. Explain Logistic Regression
+Classification algorithm that predicts probability of belonging to a class.
+Uses: P(y=1)=1/(1+e^-z)
+where z = b0+b1x1+...
+If probability > threshold (say 0.5), assign positive class.
+Why useful:
+• Probabilistic output
+• Interpretable
+• Efficient baseline classifier
+Use cases:
+• Churn prediction
+• Fraud detection
+• Disease diagnosis
+30. Why called regression if used for classification?
+Because it performs regression on log-odds. It models: log(p/(1-p))
+Classification happens only after thresholding probabilities.
+31. What is Decision Tree?
+Model that recursively splits data using conditions.
+Example: If income > 50k → split. If age < 30 → split. Continue until stopping condition.
+Output:
+• Class label
+• Or regression value.
+Advantages:
+• Easy explainability
+• Handles nonlinear patterns
+• No scaling required.
+7
+32. How does tree choose split?
+Chooses split that reduces impurity most.
+For classification:
+• Gini
+• Entropy
+For regression:
+• Variance reduction
+Best split maximizes information gain.
+33. What is Gini impurity?
+Measures probability of misclassification.
+Low Gini = pure node. High Gini = mixed classes.
+Often used because computationally simpler than entropy.
+34. What is entropy?
+Measures disorder. Pure node entropy near zero. Mixed node entropy high.
+Used in information gain: Gain = Parent entropy - weighted child entropy.
+35. What is pruning?
+Removing unnecessary tree branches.
+Types:
+• Pre-pruning Stop growth early.
+• Post-pruning Grow full tree then cut.
+Purpose: Reduce overfitting.
+8
+36. What is Random Forest?
+Ensemble of many decision trees.
+Each tree:
+• Gets bootstrap sample.
+• Uses random feature subset.
+Final prediction:
+• Voting for classification.
+• Average for regression.
+Why effective: Reduces variance.
+37. Why Random Forest works well?
+Reasons:
+• Multiple weakly correlated trees.
+• Averages reduce noise.
+• Random feature selection improves diversity.
+• Resistant to overfitting.
+Strong default model.
+38. What is bagging?
+Bootstrap Aggregating.
+Process: 1. Sample with replacement. 2. Train multiple models. 3. Aggregate predictions.
+Reduces variance.
+Random Forest uses bagging.
+39. What is boosting?
+Sequentially builds models where each new model focuses on prior errors.
+Idea: Weak learners combine into strong learner.
+Examples:
+• AdaBoost
+9
+• Gradient Boosting
+• XGBoost
+40. Bagging vs Boosting
+Bagging:
+• Parallel
+• Reduces variance
+• Example Random Forest
+Boosting:
+• Sequential
+• Reduces bias
+• Example XGBoost
+41. What is XGBoost?
+Optimized gradient boosting library.
+Features:
+• Regularization
+• Parallel processing
+• Missing value handling
+• Tree pruning
+Often dominant on tabular data.
+42. Why is XGBoost popular?
+Because it often gives strong performance without deep nets.
+Reasons:
+• Handles structured data well
+• Feature interactions
+• Robust tuning options
+43. What is KNN?
+Stores training data. Prediction uses nearest points.
+Classification: Majority vote. Regression: Average neighbors.
+10
+44. How choose K in KNN?
+Use validation.
+Small K:
+• High variance
+• Sensitive noise
+Large K:
+• High bias
+• Oversmoothing
+Choose balanced K.
+45. What is SVM?
+Finds maximum-margin separator.
+Goal: Largest gap between classes.
+Support vectors define boundary.
+Works well in high dimensions.
+46. What is kernel trick?
+Implicitly map data into higher dimension.
+Without explicitly computing transformation.
+Examples:
+• Polynomial kernel
+• RBF kernel
+Allows nonlinear boundaries.
+47. What is Naive Bayes?
+Probabilistic classifier using Bayes theorem. Assumes feature independence.
+Despite assumption, often effective.
+11
+Common in:
+• Text classification
+• Spam detection
+48. Why “naive”?
+Because it assumes features independent given class. Usually unrealistic. But often works surprisingly
+well.
+49. What is K-Means?
+Clustering algorithm.
+Steps: 1. Pick K centroids. 2. Assign points to nearest centroid. 3. Recompute centroids. 4. Repeat.
+Goal: Minimize within-cluster distance.
+50. Limitations of K-Means
+• Need choose K.
+• Sensitive initialization.
+• Poor with irregular clusters.
+• Sensitive outliers.
+51. What is elbow method?
+Plot clusters vs inertia. Find bend where improvement slows. That suggests K.
+52. What is PCA?
+Principal Component Analysis reduces dimensions.
+Creates orthogonal components capturing variance.
+Uses:
+• Compression
+• Noise reduction
+• Visualization
+12
+53. PCA vs feature selection
+PCA: Creates transformed features. Less interpretability.
+Feature selection: Keeps original variables. More interpretable.
+54. What is anomaly detection?
+Detect rare unusual events.
+Methods:
+• Isolation Forest
+• One-Class SVM
+• Autoencoders
+Examples:
+• Fraud
+• Intrusion detection
+55. What is recommendation system?
+Predict what user may like.
+Types: 1. Collaborative filtering Uses user-item patterns.
+1. Content-based Uses item attributes.
+2. Hybrid Combines both.
+Examples:
+• Netflix recommendations
+• Amazon products
+Section C — Evaluation (56–70)
+56. What is confusion matrix?
+Shows TP,FP,TN,FN. Used for classification evaluation.
+13
+57. What is accuracy?
+Correct predictions / total. Can mislead with imbalance.
+58. What is precision?
+Among predicted positives, how many correct.
+59. What is recall?
+Among actual positives, how many found.
+60. What is F1-score?
+Harmonic mean of precision and recall.
+61. When optimize precision vs recall?
+Precision when false positives costly. Recall when false negatives costly.
+62. What is ROC curve?
+TPR vs FPR across thresholds.
+63. What is AUC?
+Area under ROC. Higher better separability.
+64. What is log loss?
+Measures probability quality. Penalizes confident wrong predictions.
+65. What is MSE?
+Mean squared error. Common regression metric.
+14
+66. RMSE vs MAE
+RMSE penalizes large errors more. MAE more robust to outliers.
+67. What is R-squared?
+Variance explained by model.
+68. What is adjusted R-squared?
+Corrects R² for feature count.
+69. What is class imbalance?
+One class much rarer. Example fraud.
+70. How handle imbalance?
+• Oversampling
+• Undersampling
+• Class weights
+• SMOTE
+71. What is a neural network?
+A neural network is a model inspired by biological neurons that learns complex nonlinear relationships.
+Structure:
+• Input layer
+• Hidden layers
+• Output layer
+Each neuron: 1. Receives inputs 2. Applies weights 3. Adds bias 4. Applies activation function 5.
+Produces output
+Why powerful: Unlike linear models, neural networks can model highly complex patterns.
+15
+Applications:
+• Image recognition
+• NLP
+• Time series
+• Speech
+Challenge: Needs more data and computation than traditional ML.
+72. What is a perceptron?
+Simplest neural unit.
+Computes: Weighted sum → activation → output.
+Acts like a linear classifier.
+Limitation: Single perceptron cannot solve nonlinearly separable problems like XOR.
+This motivated multilayer networks.
+73. What is activation function?
+Function applied after weighted sum.
+Purpose: Introduces nonlinearity. Without activation, stacked layers behave like one linear model.
+Common activations:
+• Sigmoid
+• Tanh
+• ReLU
+• Leaky ReLU
+74. Why ReLU popular?
+ReLU = max(0,x)
+Benefits:
+• Computationally simple
+• Faster training
+• Reduces vanishing gradient problem
+• Sparse activations
+Issue: Dying ReLU problem. Some neurons can become permanently inactive.
+16
+Fix: Leaky ReLU.
+75. What is backpropagation?
+Algorithm for training neural networks.
+Process: 1. Forward pass computes predictions. 2. Loss calculated. 3. Backward pass computes
+gradients. 4. Optimizer updates weights.
+Uses chain rule from calculus.
+Why important: This is how deep models learn.
+76. What is vanishing gradient?
+Gradients become extremely small as they move backward through deep layers.
+Problem: Early layers stop learning.
+Common in:
+• Deep networks
+• Traditional RNNs
+Solutions:
+• ReLU
+• Batch norm
+• Better initialization
+• LSTM
+77. What is exploding gradient?
+Gradients become extremely large.
+Effects:
+• Unstable training
+• Huge weight updates
+• Divergence
+Fixes:
+• Gradient clipping
+• Lower learning rate
+• Better initialization
+17
+78. What is dropout?
+Regularization method. Randomly disables neurons during training.
+Example: Dropout rate 0.5 means half neurons ignored each step.
+Purpose: Prevents co-adaptation. Reduces overfitting.
+Think of it as training many subnetworks.
+79. What is batch normalization?
+Normalizes activations inside network.
+Benefits:
+• Stabilizes learning
+• Allows larger learning rates
+• Faster convergence
+• Sometimes regularization effect
+Common interview question: Batch normalization is not same as input standardization. It operates
+inside network.
+80. What is CNN?
+Convolutional Neural Network specialized for images.
+Core idea: Learn spatial patterns automatically.
+Main components:
+• Convolution layers
+• Activation
+• Pooling
+• Fully connected layers
+Learns: Early layers: edges Middle layers: textures Later layers: objects
+Applications:
+• Object detection
+• Medical imaging
+• Drowsiness detection
+18
+81. What is pooling?
+Downsampling operation.
+Types:
+• Max pooling
+• Average pooling
+Purpose:
+• Reduce dimensions
+• Lower computation
+• Improve robustness
+Example: 2x2 max pooling keeps largest value.
+82. What is RNN?
+Recurrent Neural Network designed for sequences.
+Unlike feedforward networks, it has memory through recurrent connections.
+Applications:
+• Text
+• Speech
+• Time series
+Issue: Vanishing gradients.
+83. LSTM vs RNN
+LSTM solves long-term dependency issue.
+Has gates:
+• Forget gate
+• Input gate
+• Output gate
+These control information flow.
+Why better: Can retain important information longer.
+Use cases:
+• Language modeling
+19
+• Sequence prediction
+84. What is transformer?
+Deep learning architecture based on self-attention.
+Major breakthrough over RNNs.
+Key idea: Model relationships between all tokens simultaneously.
+Advantages:
+• Parallelizable
+• Handles long context better
+• Scalable
+Foundation of:
+• BERT
+• GPT
+• Modern LLMs
+85. What is transfer learning?
+Reuse pretrained model for new task.
+Approaches: 1. Feature extraction Use pretrained model as fixed feature extractor.
+1. Fine-tuning Update some or all layers.
+Why powerful:
+• Less data needed
+• Faster training
+• Strong performance
+Example: Using MobileNetV2 pretrained weights for drowsiness detection.
+Common interview question: Why transfer learning useful? Because pretrained models already learned
+general patterns.
+20
+Section E — NLP, RAG, MLOps, Practical (86–100)
+86. What are embeddings?
+Embeddings are dense numerical vector representations of data that capture semantic meaning.
+Idea: Similar items have vectors close together.
+Example: "king" and "queen" appear closer than "king" and "banana".
+Uses:
+• Semantic search
+• Recommendation
+• Retrieval
+• Clustering
+Types:
+• Word embeddings
+• Sentence embeddings
+• Document embeddings
+Interview trap: Embeddings are learned representations, not manual feature engineering.
+87. What is cosine similarity?
+Measures similarity using angle between vectors.
+Value: 1 = identical direction 0 = unrelated -1 = opposite
+Why used: Magnitude matters less than direction. Important in semantic retrieval.
+Used heavily in RAG.
+88. What is RAG?
+Retrieval-Augmented Generation combines retrieval with language generation.
+Pipeline: 1. User asks question. 2. Convert query to embedding. 3. Search vector database. 4. Retrieve
+relevant chunks. 5. Add chunks to prompt. 6. LLM generates grounded answer.
+Why use RAG?
+• Reduces hallucination
+• Adds domain knowledge
+21
+• Keeps information current
+• Cheaper than fine-tuning in many cases
+Example: AI interview prep assistant retrieving answer from knowledge base.
+89. What is chunking in RAG?
+Splitting documents into smaller retrievable units.
+Why needed: Whole documents too large. Chunking improves retrieval precision.
+Common strategies:
+• Fixed chunks
+• Sliding window chunks
+• Semantic chunking
+• Recursive chunking
+Tradeoff: Too small: Lose context.
+Too large: Poor retrieval precision.
+Very common interview question.
+90. What is vector database?
+Database optimized for storing embeddings and similarity search.
+Tasks:
+• Store vectors
+• Index vectors
+• Fast nearest-neighbor search
+Examples:
+• FAISS
+• Chroma
+• Pinecone
+Used in RAG systems.
+91. What is fine-tuning?
+Updating model weights using task-specific data.
+Goal: Adapt base model.
+22
+Examples:
+• Domain adaptation
+• Instruction tuning
+• Classification adaptation
+Costs:
+• Compute heavy
+• Requires training data
+• Can overfit
+92. Fine-tuning vs prompt engineering
+Prompt engineering: Change instructions. No model weights change.
+Fine-tuning: Changes model parameters.
+RAG: Adds external knowledge.
+Interviewers often ask all three together. Know distinction.
+93. What is model drift?
+Production performance degrades over time.
+Reason: Data environment changes.
+Example: Fraud model trained on old fraud patterns starts failing.
+Need monitoring.
+94. What is concept drift?
+Relationship between inputs and outputs changes.
+Example: Customer behavior changes after policy shift.
+Model assumptions break.
+Fix: Retrain model.
+23
+95. What is data drift?
+Input distribution changes.
+Example: Training ages 20–50. Production ages 50–80.
+Data changed even if label relationship may not.
+Concept drift and data drift are not same. Interview trap.
+96. What is ML pipeline?
+End-to-end workflow.
+Typical stages:
+• Data ingestion
+• Cleaning
+• Feature engineering
+• Training
+• Validation
+• Deployment
+• Monitoring
+Goal: Reproducibility and automation.
+97. What is hyperparameter tuning?
+Finding best external model settings.
+Examples:
+• Learning rate
+• Tree depth
+• Regularization strength
+Methods: 1. Grid search 2. Random search 3. Bayesian optimization
+Interview insight: Random search often better than naive grid search.
+98. Explain a project challenge you faced
+Use STAR framework.
+Situation Task Action Result
+24
+Example: Class imbalance in fraud detection.
+Action:
+• Used class weighting
+• Focused on recall and PR metrics
+• Compared models
+Result: Improved detection.
+99. How would you improve model performance?
+Systematic answer: 1. Check data quality. 2. Improve features. 3. Tune hyperparameters. 4. Try better
+models. 5. Ensemble. 6. Error analysis.
+Strong interview answer is process-driven, not random tricks.
+100. How would you approach a new ML problem?
+Framework: 1. Define problem. 2. Understand metric. 3. Explore data. 4. Build baseline. 5. Improve
+iteratively. 6. Deploy. 7. Monitor.
+Interviewers care about thinking process.
+Good candidates do not jump straight to XGBoost. They start with problem framing.
+Rapid Fire Frequently Asked Bonus Topics
+• SHAP explainability
+• Attention mechanism
+• LoRA
+• ANN indexing
+• Precision-recall curve
+• A/B testing
+• MLflow
+• Docker deployment
+End of document.
+25

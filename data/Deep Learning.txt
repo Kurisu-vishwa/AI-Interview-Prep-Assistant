@@ -1,0 +1,95 @@
+1. What is Deep Learning?
+Deep Learning is a subset of Machine Learning that uses neural networks with multiple hidden layers to learn patterns automatically from data.
+
+2. What is an Artificial Neural Network (ANN)?
+An ANN is a model inspired by the human brain made up of input layers, hidden layers, and output layers to process data and make predictions.
+
+3. Difference between Machine Learning and Deep Learning?
+Machine Learning often requires manual feature engineering, while Deep Learning learns features automatically. Deep Learning usually needs more data and computation.
+
+4. What are weights and biases?
+Weights determine the importance of inputs. Bias helps shift the output. Both are learned during training.
+
+5. What is an activation function?
+An activation function introduces non-linearity so the model can learn complex patterns. Examples: ReLU, Sigmoid, Tanh.
+
+6. Why is ReLU commonly used?
+ReLU is simple, computationally efficient, and helps reduce vanishing gradient problems.
+
+7. What is forward propagation?
+Forward propagation is passing input through the network to generate predictions.
+
+8. What is backpropagation?
+Backpropagation calculates error gradients and updates weights to reduce loss.
+
+9. What is Gradient Descent?
+Gradient Descent is an optimization algorithm used to minimize loss by updating weights iteratively.
+
+10. What is a Loss Function?
+A loss function measures how far predictions are from actual values. Example: MSE, Cross-Entropy.
+
+11. What is the vanishing gradient problem?
+Gradients become too small during training, causing early layers to stop learning.
+
+12. What is Overfitting?
+When a model performs well on training data but poorly on unseen data.
+
+13. How can you prevent overfitting?
+Using dropout, regularization, data augmentation, and early stopping.
+
+14. What is Dropout?
+Dropout randomly disables neurons during training to prevent overfitting.
+
+15. What is Batch Normalization?
+It normalizes activations to improve training speed and stability.
+
+16. What is Epoch, Batch, and Iteration?
+Epoch: One full pass through data.
+Batch: Small subset of data.
+Iteration: One weight update.
+
+17. What is a CNN?
+CNN (Convolutional Neural Network) is mainly used for image processing tasks.
+
+18. What is Convolution?
+Applying filters to detect features like edges and textures.
+
+19. What is Pooling?
+Reducing feature map dimensions to lower computation. Example: Max Pooling.
+
+20. What is Transfer Learning?
+Using a pretrained model and fine-tuning it for a new task.
+
+21. What is an Optimizer?
+An optimizer updates weights to minimize loss. Example: Adam, SGD.
+
+22. Why is Adam optimizer popular?
+Adam combines momentum and adaptive learning rates, making training efficient.
+
+23. What is Learning Rate?
+It controls the size of weight updates during training.
+
+24. Difference between CNN and RNN?
+CNN is used for images.
+RNN is used for sequential data like text and time series.
+
+25. What is LSTM?
+LSTM is a type of RNN that handles long-term dependencies using memory gates.
+
+26. Why use GPUs in Deep Learning?
+GPUs speed up matrix operations and train models faster.
+
+27. What is Data Augmentation?
+Artificially increasing data using transformations like rotation, flipping, and cropping.
+
+28. Explain your Drowsiness Detection project.
+I built a drowsiness detection system using MobileNetV2 to classify Open, Closed, Yawn, and No Yawn states, with an alert mechanism for sustained drowsiness.
+
+29. Why use transfer learning instead of training from scratch?
+It saves time, requires less data, and often gives better performance.
+
+30. What evaluation metrics do you know?
+Accuracy, Precision, Recall, F1-score, Confusion Matrix.
+
+31. What is Label Smoothing?
+Instead of hard labels like 1 and 0, use softer targets (e.g. 0.9 and 0.1) to improve generalization.
